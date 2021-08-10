@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public float damagePerHealth = 2.0f;
     public float shotPercentCost = 0.1f;
 
+    private float aimAngle;
 
     [Header("Components")]
     public GameObject aimingReticle;
@@ -30,9 +31,8 @@ public class Player : MonoBehaviour
     void Update()
     {
         ProcessMove();
-
-
-
+        ProcessAim();
+        ProcessShoot();
 
         //Size increment test
         /*testTimer += Time.deltaTime;
@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
         
     }
 
-
+    #region Control Functions
     private void ProcessMove()
     {
         float xMov = Input.GetAxis("Horizontal");
@@ -56,4 +56,21 @@ public class Player : MonoBehaviour
 
         transform.Translate(velVector);
     }
+
+    private void ProcessAim()
+    {
+        Vector3 mouseDir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
+        mouseDir = mouseDir.normalized;
+
+        aimAngle = Mathf.Atan2(mouseDir.y, mouseDir.x) * Mathf.Rad2Deg;
+
+        aimingReticle.transform.rotation = Quaternion.Euler(new Vector3(0, 0, aimAngle));
+    }
+
+    private void ProcessShoot()
+    {
+
+    }
+
+    #endregion
 }
