@@ -34,6 +34,9 @@ public class MainMenuController : MonoBehaviour
     }
     public void OnPlayClick()
     {
+
+        PhotonManager.Instance.Connect();
+
         Debug.Log("Button works");
         foreach(GameObject g in mainMenuObjects)
         {
