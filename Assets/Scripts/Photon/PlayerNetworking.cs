@@ -6,6 +6,7 @@ using Photon.Pun;
 public class PlayerNetworking : MonoBehaviour
 {
     public MonoBehaviour[] scriptsToIgnore;
+    public GameObject[] objectsToIgnore;
 
     private PhotonView photonView;
 
@@ -17,6 +18,10 @@ public class PlayerNetworking : MonoBehaviour
             foreach(MonoBehaviour script in scriptsToIgnore)
             {
                 script.enabled = false;
+            }
+            foreach(GameObject obj in objectsToIgnore)
+            {
+                obj?.SetActive(false);
             }
         }
     }

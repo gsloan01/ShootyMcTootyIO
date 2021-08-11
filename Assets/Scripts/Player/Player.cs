@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public Camera playerCamera;
+
     [Serializable]
     public class WeaponInfo
     {
@@ -102,7 +104,7 @@ public class Player : MonoBehaviour
 
     private void ProcessAim()
     {
-        Vector3 mouseDir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
+        Vector3 mouseDir = Input.mousePosition - playerCamera.WorldToScreenPoint(transform.position);
         mouseDir = mouseDir.normalized;
 
         aimAngle = Mathf.Atan2(mouseDir.y, mouseDir.x) * Mathf.Rad2Deg;
