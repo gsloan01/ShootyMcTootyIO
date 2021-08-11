@@ -56,6 +56,7 @@ public class Projectile : MonoBehaviour
 
         if (mass)
         {
+            mass.Fragment(damage, owner.gameObject);
             mass.Health -= damage;
             Destroy(gameObject);
         }
