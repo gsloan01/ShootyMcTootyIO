@@ -24,6 +24,6 @@ public class MainMenuController : MonoBehaviour
     }
     public void OnPlayClick()
     {
-        Debug.Log("Button works");
+        PhotonManager.Instance.Connect();
     }
 }
