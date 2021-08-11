@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     public GameObject aimingReticle;
     public BodyMass bodyMass;
 
+    public GameObject healthFragment;
+
 
     private float testTimer = 0.0f;
 
@@ -44,6 +46,7 @@ public class Player : MonoBehaviour
         }*/
         
     }
+
 
     #region Control Functions
     private void ProcessMove()
