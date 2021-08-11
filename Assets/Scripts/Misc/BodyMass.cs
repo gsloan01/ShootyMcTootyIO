@@ -25,7 +25,6 @@ public class BodyMass : MonoBehaviour
 
     //The scale the object takes when health = 0
     public float minScale = .3f;
-
     public GameObject fragment;
 
     // Start is called before the first frame update
@@ -69,7 +68,13 @@ public class BodyMass : MonoBehaviour
         {
             GameObject frag = Instantiate(fragment, transform.position, Quaternion.identity);
             frag.GetComponent<Fragment>().SetTarget(target);
-            frag.GetComponent<Rigidbody2D>().AddForceAtPosition(Vector2.one, transform.position);
+            //frag.GetComponent<Rigidbody2D>().AddForceAtPosition(Vector2.one, transform.position);
+
+            float xRand = Random.Range(-.99f, .99f);
+            float yRand = Random.Range(-.99f, .99f);
+            Vector2 velocity = new Vector2(xRand, yRand) * 5.0f;
+
+            frag.GetComponent<Rigidbody2D>().velocity = velocity;
         }
         //TODO Create a number of health fragments based on the damage dealt, and the target they will fly to
     }
