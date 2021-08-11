@@ -67,13 +67,13 @@ public class Player : MonoBehaviour
         ProcessShoot();
 
         //Size increment test
-        testTimer += Time.deltaTime;
+        /*testTimer += Time.deltaTime;
         if (testTimer > 2.0f)
         {
             testTimer = 0;
             bodyMass.Health += 4;
             Debug.Log(bodyMass.Health);
-        }
+        }*/
         
     }
 
@@ -116,17 +116,25 @@ public class Player : MonoBehaviour
         if (Input.GetButton("Fire1") && weaponRate > weapon.fireRate)
         {
             weaponRate = 0;
-            GameObject newProjectile = Instantiate(projectile, shotTransform.position, Quaternion.identity);
+            float spreadAngle = 5.0f;
 
-            int damage = TakeShotDamage();
+            for (int i = 0; i < weapon.fireNum; i++)
+            {
+                GameObject newProjectile = Instantiate(projectile, shotTransform.position, Quaternion.identity);
 
-            //Base speed
-            float speed = 3;
-            float xSpeed = Mathf.Cos(Mathf.Deg2Rad * aimAngle) * speed;
-            float ySpeed = Mathf.Sin(Mathf.Deg2Rad * aimAngle) * speed;
-            Vector3 shotVelocity = new Vector3(xSpeed, ySpeed, 0);
+                int damage = TakeShotDamage();
 
-            newProjectile.GetComponentInChildren<Projectile>().InstantiateProjectile(damage, this, shotVelocity);
+                float weaponAngle = spreadAngle * (i - Mathf.Floor(weapon.fireNum / 2));
+                weaponAngle += aimAngle;
+
+                //Base speed
+                float speed = 3;
+                float xSpeed = Mathf.Cos(Mathf.Deg2Rad * weaponAngle) * speed;
+                float ySpeed = Mathf.Sin(Mathf.Deg2Rad * weaponAngle) * speed;
+                Vector3 shotVelocity = new Vector3(xSpeed, ySpeed, 0);
+
+                newProjectile.GetComponentInChildren<Projectile>().InstantiateProjectile(damage, this, shotVelocity);
+            }
         }
 
         if (weapon.powerupActive)
