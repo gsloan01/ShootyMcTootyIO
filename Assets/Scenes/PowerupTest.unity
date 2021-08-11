@@ -263,6 +263,7 @@ GameObject:
   m_Component:
   - component: {fileID: 214057888}
   - component: {fileID: 214057889}
+  - component: {fileID: 214057890}
   m_Layer: 0
   m_Name: BigShotPowerup
   m_TagString: Untagged
@@ -313,6 +314,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.25, y: 1.1}
   m_EdgeRadius: 0
+--- !u!114 &214057890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214057887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49796b4f610f52d40968f798d79221fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponInfo:
+    damagePerHealth: 7
+    shotPercentCost: 0.1
+    fireRate: 3
+    fireNum: 1
+    powerupActive: 1
+    powerupTimer: 10
 --- !u!1 &341742075
 GameObject:
   m_ObjectHideFlags: 0
@@ -751,9 +771,10 @@ GameObject:
   - component: {fileID: 726525596}
   - component: {fileID: 726525595}
   - component: {fileID: 726525594}
+  - component: {fileID: 726525599}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -802,10 +823,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseSpeed: 4
-  damagePerHealth: 1.5
-  shotPercentCost: 0.1
+  weapon:
+    damagePerHealth: 2
+    shotPercentCost: 0.1
+    fireRate: 1
+    fireNum: 1
+    powerupActive: 0
+    powerupTimer: 10
   aimingReticle: {fileID: 1770927420}
   bodyMass: {fileID: 726525595}
+  projectile: {fileID: 7178329793846644056, guid: b85b1d6ab71ce57499f88843f298db2a,
+    type: 3}
 --- !u!212 &726525597
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -874,6 +902,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &726525599
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726525593}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0.05
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &797348913
 GameObject:
   m_ObjectHideFlags: 0
@@ -965,6 +1014,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1431428099}
+  - component: {fileID: 1431428101}
   - component: {fileID: 1431428100}
   m_Layer: 0
   m_Name: MultishotPowerup
@@ -1016,6 +1066,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.25, y: 1.1}
   m_EdgeRadius: 0
+--- !u!114 &1431428101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431428098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49796b4f610f52d40968f798d79221fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponInfo:
+    damagePerHealth: 2
+    shotPercentCost: 0.1
+    fireRate: 0.25
+    fireNum: 1
+    powerupActive: 1
+    powerupTimer: 10
 --- !u!1 &1471691873
 GameObject:
   m_ObjectHideFlags: 0
@@ -1612,6 +1681,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1977238455}
   - component: {fileID: 1977238456}
+  - component: {fileID: 1977238457}
   m_Layer: 0
   m_Name: ShotgunPowerup
   m_TagString: Untagged
@@ -1662,6 +1732,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.1, y: 1.25}
   m_EdgeRadius: 0
+--- !u!114 &1977238457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1977238454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49796b4f610f52d40968f798d79221fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponInfo:
+    damagePerHealth: 4
+    shotPercentCost: 0.1
+    fireRate: 1.5
+    fireNum: 4
+    powerupActive: 1
+    powerupTimer: 10
 --- !u!1 &2122277804
 GameObject:
   m_ObjectHideFlags: 0

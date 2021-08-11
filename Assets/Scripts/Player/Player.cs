@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [Serializable]
     public class WeaponInfo
     {
         public float damagePerHealth = 2.0f;
@@ -12,6 +14,9 @@ public class Player : MonoBehaviour
 
         public float fireRate = 1f;
         public float fireNum = 1;
+
+        public bool powerupActive;
+        public float powerupTimer = 10f;
 
         public WeaponInfo()
         {
@@ -112,6 +117,17 @@ public class Player : MonoBehaviour
             Vector3 shotVelocity = new Vector3(xSpeed, ySpeed, 0);
 
             newProjectile.GetComponentInChildren<Projectile>().InstantiateProjectile(damage, this, shotVelocity);
+        }
+
+        if (weapon.powerupActive)
+        {
+            weapon.powerupTimer -= Time.deltaTime;
+
+            if (weapon.powerupTimer <= 0)
+            {
+                weapon.powerupActive = false;
+                weapon = new WeaponInfo();
+            }
         }
     }
 
