@@ -10,7 +10,7 @@ public class Projectile : MonoBehaviour
 
     public Vector3 Velocity
     {
-        get { return velocity * transform.localScale.x; }
+        get { return velocity * transform.parent.localScale.x; }
     }
 
 
@@ -24,7 +24,7 @@ public class Projectile : MonoBehaviour
         //QUICK GROWTH
         //scale = Mathf.Sqrt(health * .5f) - (Mathf.Sqrt(baseHealth * .5f) - 1);
 
-        transform.localScale = new Vector3(scale, scale, scale);
+        transform.parent.localScale = new Vector3(scale, scale, scale);
     }
 
     // Update is called once per frame
@@ -41,9 +41,16 @@ public class Projectile : MonoBehaviour
         velocity = newVelocity;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.GetComponent<Player>() == owner) return;
+        Debug.Log("Not Player");
+        Player player = collision.collider.GetComponent<Player>();
+        if (player)
+        {
+            if (player == owner) return;
+        }
+
+
 
         BodyMass mass = collision.collider.GetComponent<BodyMass>();
 
@@ -53,4 +60,5 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
 }

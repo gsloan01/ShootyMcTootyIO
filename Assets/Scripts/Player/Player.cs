@@ -47,6 +47,8 @@ public class Player : MonoBehaviour
     public GameObject aimingReticle;
     public BodyMass bodyMass;
     public GameObject projectile;
+    public Transform shotTransform;
+    public GameObject healthFragment;
 
 
     private float testTimer = 0.0f;
@@ -74,6 +76,7 @@ public class Player : MonoBehaviour
         }
         
     }
+
 
     #region Control Functions
     private void ProcessMove()
@@ -103,7 +106,7 @@ public class Player : MonoBehaviour
         if (Input.GetButton("Fire1") && weaponRate > weapon.fireRate)
         {
             weaponRate = 0;
-            GameObject newProjectile = Instantiate(projectile, transform.position, Quaternion.identity);
+            GameObject newProjectile = Instantiate(projectile, shotTransform.position, Quaternion.identity);
 
             int damage = TakeShotDamage();
 
@@ -113,7 +116,7 @@ public class Player : MonoBehaviour
             float ySpeed = Mathf.Sin(Mathf.Deg2Rad * aimAngle) * speed;
             Vector3 shotVelocity = new Vector3(xSpeed, ySpeed, 0);
 
-            newProjectile.GetComponent<Projectile>().InstantiateProjectile(damage, this, shotVelocity);
+            newProjectile.GetComponentInChildren<Projectile>().InstantiateProjectile(damage, this, shotVelocity);
         }
 
         if (weapon.powerupActive)
