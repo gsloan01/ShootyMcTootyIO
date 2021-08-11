@@ -104,7 +104,11 @@ public class Player : MonoBehaviour
 
     private void ProcessAim()
     {
-        Vector3 mouseDir = Input.mousePosition - playerCamera.WorldToScreenPoint(transform.position);
+        Vector3 mouseDir = Vector3.zero;
+        if (playerCamera != null)
+        {
+            mouseDir = Input.mousePosition - playerCamera.WorldToScreenPoint(transform.position);
+        }
         mouseDir = mouseDir.normalized;
 
         aimAngle = Mathf.Atan2(mouseDir.y, mouseDir.x) * Mathf.Rad2Deg;
