@@ -35,6 +35,11 @@ public class MainMenuController : MonoBehaviour
     public void OnPlayClick()
     {
         Debug.Log("Button works");
+        foreach(GameObject g in mainMenuObjects)
+        {
+            g.SetActive(false);
+        }
+        loadingTxt.gameObject.SetActive(true);
     }
     void MouseFX()
     {
@@ -48,9 +53,5 @@ public class MainMenuController : MonoBehaviour
             mouseFX.Stop();
         }
     }
-    void LoadingTextFlair()
-    {
-        loadingTxt.text = "loading";
 
-    }
 }
