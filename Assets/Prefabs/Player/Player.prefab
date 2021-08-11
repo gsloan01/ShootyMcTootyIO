@@ -247,7 +247,7 @@ GameObject:
   - component: {fileID: 571262704902920480}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -332,10 +332,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseSpeed: 4
+  weapon:
+    damagePerHealth: 2
+    shotPercentCost: 0.1
+    fireRate: 1
+    fireNum: 1
+    powerupActive: 0
+    powerupTimer: 10
   aimingReticle: {fileID: 6754705241872480085}
   bodyMass: {fileID: 6754705242747173345}
   projectile: {fileID: 7178329793846644056, guid: b85b1d6ab71ce57499f88843f298db2a, type: 3}
   shotTransform: {fileID: 5665855564778962452}
+  healthFragment: {fileID: 8876059630334482013, guid: 2b4b9d0cb98f66949bc832bc0328b8d4, type: 3}
 --- !u!114 &6754705242747173345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,6 +359,7 @@ MonoBehaviour:
   baseHealth: 20
   baseColor: {r: 0.8962264, g: 0.12175146, b: 0.12175146, a: 1}
   minScale: 0.5
+  fragment: {fileID: 0}
 --- !u!58 &6754705242747173344
 CircleCollider2D:
   m_ObjectHideFlags: 0
