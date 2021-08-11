@@ -39,8 +39,8 @@ public class Player : MonoBehaviour
     public float Speed { get { return baseSpeed * transform.localScale.x; } }
     public WeaponInfo weapon = new WeaponInfo();
     private float weaponRate = 0;
-    
 
+    private Vector3 dodgeVelocity;
     private float aimAngle;
 
     [Header("Components")]
@@ -81,13 +81,23 @@ public class Player : MonoBehaviour
     #region Control Functions
     private void ProcessMove()
     {
-        float xMov = Input.GetAxis("Horizontal");
-        float yMov = Input.GetAxis("Vertical");
+        float xMov = Input.GetAxisRaw("Horizontal");
+        float yMov = Input.GetAxisRaw("Vertical");
 
         Vector3 velVector = new Vector3(xMov, yMov, 0);
-        velVector *= Speed * Time.deltaTime;
+        velVector = velVector.normalized;
 
-        transform.Translate(velVector);
+        dodgeVelocity -= (dodgeVelocity * 10) * Time.deltaTime;
+        if (dodgeVelocity.magnitude < 1.0f) dodgeVelocity = new Vector3();
+        if (velVector.magnitude > 0.01f && Input.GetButtonDown("Fire3") && dodgeVelocity.magnitude == 0)
+        {
+            dodgeVelocity = velVector * 18.0f * transform.localScale.x;
+        } 
+
+        velVector *= (Speed) * Time.deltaTime;
+        Vector3 dodgeVel = dodgeVelocity * Time.deltaTime;
+
+        transform.Translate(velVector + dodgeVel);
     }
 
     private void ProcessAim()

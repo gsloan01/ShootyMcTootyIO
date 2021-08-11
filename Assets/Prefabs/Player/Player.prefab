@@ -332,10 +332,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseSpeed: 4
+  weapon:
+    damagePerHealth: 2
+    shotPercentCost: 0.1
+    fireRate: 1
+    fireNum: 1
+    powerupActive: 0
+    powerupTimer: 10
   aimingReticle: {fileID: 6754705241872480085}
   bodyMass: {fileID: 6754705242747173345}
   projectile: {fileID: 7178329793846644056, guid: b85b1d6ab71ce57499f88843f298db2a, type: 3}
   shotTransform: {fileID: 5665855564778962452}
+  healthFragment: {fileID: 8876059630334482013, guid: 2b4b9d0cb98f66949bc832bc0328b8d4, type: 3}
 --- !u!114 &6754705242747173345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -349,8 +357,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseHealth: 20
-  baseColor: {r: 0.8962264, g: 0.12175146, b: 0.12175146, a: 1}
+  baseColor: {r: 0.1215686, g: 0.8980392, b: 0.20027876, a: 1}
   minScale: 0.5
+  fragment: {fileID: 8876059630334482013, guid: 2b4b9d0cb98f66949bc832bc0328b8d4, type: 3}
 --- !u!58 &6754705242747173344
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -375,7 +384,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6754705242747173349}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0

@@ -8,9 +8,11 @@ public class Projectile : MonoBehaviour
     public Player owner;
     public Vector3 velocity;
 
+    private Rigidbody2D rb;
+
     public Vector3 Velocity
     {
-        get { return velocity * transform.parent.localScale.x; }
+        get { return velocity * transform.parent.localScale.x * 10; }
     }
 
 
@@ -25,12 +27,14 @@ public class Projectile : MonoBehaviour
         //scale = Mathf.Sqrt(health * .5f) - (Mathf.Sqrt(baseHealth * .5f) - 1);
 
         transform.parent.localScale = new Vector3(scale, scale, scale);
+
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Velocity * Time.deltaTime);
+        rb.MovePosition(transform.position + Velocity * Time.deltaTime);
     }
 
 
@@ -41,18 +45,15 @@ public class Projectile : MonoBehaviour
         velocity = newVelocity;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Not Player");
-        Player player = collision.collider.GetComponent<Player>();
+        Player player = collision.GetComponent<Player>();
         if (player)
         {
             if (player == owner) return;
         }
 
-
-
-        BodyMass mass = collision.collider.GetComponent<BodyMass>();
+        BodyMass mass = collision.GetComponent<BodyMass>();
 
         if (mass)
         {
