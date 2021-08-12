@@ -55,6 +55,7 @@ public class BodyMass : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log("Mass Name: " + gameObject.name);
     }
     void Die()
     {
