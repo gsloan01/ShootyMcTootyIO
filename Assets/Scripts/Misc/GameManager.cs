@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     void Start()
     {
+        instance = this;
+
         if (PlayerManager.LocalPlayerInstance == null)
         {
             Vector2 playerSpawnPosition = new Vector2(Random.Range(-50, 50), Random.Range(-50, 50));
