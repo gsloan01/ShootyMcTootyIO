@@ -1,24 +1,28 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class Projectile : MonoBehaviourPunCallbacks, IPunInstantiateMagicCallback
 {
     public int damage;
-    public Player owner;
+    public GameObject owner;
     public Vector3 velocity;
+
+    float baseScale;
 
     private Rigidbody2D rb;
 
     public Vector3 Velocity
     {
-        get { return velocity * transform.parent.localScale.x * 10; }
+        get { return velocity * transform.localScale.x * 30; }
     }
 
 
     // Start is called before the first frame update
     void Start()
     {
+        baseScale = transform.localScale.x;
         float scale = 1.0f;
 
         //SLOW GROWTH
@@ -26,7 +30,7 @@ public class Projectile : MonoBehaviour
         //QUICK GROWTH
         //scale = Mathf.Sqrt(health * .5f) - (Mathf.Sqrt(baseHealth * .5f) - 1);
 
-        transform.parent.localScale = new Vector3(scale, scale, scale);
+        transform.parent.localScale = new Vector3(scale, scale, scale) * baseScale;
 
         rb = GetComponent<Rigidbody2D>();
     }
@@ -34,24 +38,14 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(rb);
         rb.MovePosition(transform.position + Velocity * Time.deltaTime);
     }
 
 
-    public void InstantiateProjectile(int newDamage, Player newOwner, Vector3 newVelocity)
-    {
-        damage = newDamage;
-        owner = newOwner;
-        velocity = newVelocity;
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Player player = collision.GetComponent<Player>();
-        if (player)
-        {
-            if (player == owner) return;
-        }
+        if (owner == collision.gameObject) return;
 
         BodyMass mass = collision.GetComponent<BodyMass>();
 
@@ -61,6 +55,17 @@ public class Projectile : MonoBehaviour
             mass.Health -= damage;
             Destroy(gameObject);
         }
+    }
+
+    void IPunInstantiateMagicCallback.OnPhotonInstantiate(PhotonMessageInfo info)
+    {
+        object[] instantiationData = info.photonView.InstantiationData;
+
+        damage = (int) instantiationData[0];
+        owner = (PhotonView.Find((int) instantiationData[1])).gameObject;
+        velocity = (Vector3) instantiationData[2];
+
+        rb = GetComponent<Rigidbody2D>();
     }
 
 }

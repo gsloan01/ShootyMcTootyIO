@@ -129,7 +129,6 @@ public class Player : MonoBehaviour
 
             for (int i = 0; i < weapon.fireNum; i++)
             {
-                GameObject newProjectile = PhotonNetwork.Instantiate(projectile.name, shotTransform.position, Quaternion.identity);
 
                 int damage = TakeShotDamage();
 
@@ -142,7 +141,10 @@ public class Player : MonoBehaviour
                 float ySpeed = Mathf.Sin(Mathf.Deg2Rad * weaponAngle) * speed;
                 Vector3 shotVelocity = new Vector3(xSpeed, ySpeed, 0);
 
-                newProjectile.GetComponentInChildren<Projectile>().InstantiateProjectile(damage, this, shotVelocity);
+                object[] data = { damage, gameObject.GetPhotonView().ViewID, shotVelocity };
+
+                GameObject newProjectile = PhotonNetwork.Instantiate(projectile.name, shotTransform.position, Quaternion.identity, 0, data);
+                
             }
         }
 
