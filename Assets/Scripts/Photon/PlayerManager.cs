@@ -28,7 +28,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (stream.IsWriting)
         {
-            //stream.SendNext(health);
+            stream.SendNext(nameUI);
         }
         else
         {
