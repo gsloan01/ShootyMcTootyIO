@@ -55,13 +55,11 @@ public class BodyMass : MonoBehaviour
 
     private void Update()
     {
-        //Maybe Die before health hits 0??
-        if (health <= 0)
-        {
-
-        }
     }
-
+    void Die()
+    {
+        GameManager.Instance.LeaveRoom();
+    }
     private void UpdateScale()
     {
         float scale = 1.0f;
@@ -94,6 +92,23 @@ public class BodyMass : MonoBehaviour
             Vector2 velocity = new Vector2(xRand, yRand) * 3.0f;
 
             frag.GetComponent<Rigidbody2D>().velocity = velocity;
+        }
+        if(health <= 0)
+        {
+            GameManager.Instance.LeaveRoom();
+            int frags = Random.Range(5, 10);
+            for (int i = 0; i < frags; i++)
+            {
+                GameObject frag = Instantiate(fragment, transform.position, Quaternion.identity);
+                frag.GetComponent<Fragment>().InstantiateFragment(target, baseColor);
+                //frag.GetComponent<Rigidbody2D>().AddForceAtPosition(Vector2.one, transform.position);
+
+                float xRand = Random.Range(-.99f, .99f);
+                float yRand = Random.Range(-.99f, .99f);
+                Vector2 velocity = new Vector2(xRand, yRand) * 3.0f;
+
+                frag.GetComponent<Rigidbody2D>().velocity = velocity;
+            }
         }
     }
 }

@@ -27,6 +27,10 @@ public class Fragment : MonoBehaviour
 
     void Update()
     {
+        if(target == null)
+        {
+            Destroy(gameObject);
+        }
         //Velocity drag
         rb.velocity -= (rb.velocity * .60f) * Time.deltaTime;
 
@@ -47,5 +51,6 @@ public class Fragment : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+        
     }
 }
