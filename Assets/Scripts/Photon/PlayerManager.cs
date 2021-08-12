@@ -9,15 +9,15 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     [Tooltip("The local player instance. Use this to know if the local player is represented in the Scene")]
     public static GameObject LocalPlayerInstance;
 
-    public TMP_Text nameUI;
+    //public TMP_Text nameUI;
 
 
     void Awake()
     {
-        if (photonView.IsMine)
+        if (photonView.isMine)
         {
             PlayerManager.LocalPlayerInstance = this.gameObject;
-            nameUI.text = PhotonNetwork.NickName;
+            //nameUI.text = PhotonNetwork.NickName;
             //nameUI.text = PhotonNetwork.PlayerListOthers;
         }
 
@@ -28,7 +28,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (stream.IsWriting)
         {
-            //stream.SendNext(health);
+            //stream.SendNext(nameUI);
         }
         else
         {
@@ -38,7 +38,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
 
     void Update()
     {
-        if (!photonView.IsMine)
+        if (!photonView.isMine)
         {
             return;
         }
