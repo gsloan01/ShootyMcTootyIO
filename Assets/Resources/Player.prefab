@@ -276,8 +276,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847,
-    type: 3}
+  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
   m_Color: {r: 0.64423084, g: 0, b: 0.6509804, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -311,11 +310,9 @@ MonoBehaviour:
     powerupTimer: 10
   aimingReticle: {fileID: 2600107577030729133}
   bodyMass: {fileID: 2600107577364255513}
-  projectile: {fileID: 2712681993478406930, guid: 70d3d1c40bd67e4459c0f57227811e78,
-    type: 3}
+  projectile: {fileID: 2712681993478406930, guid: 70d3d1c40bd67e4459c0f57227811e78, type: 3}
   shotTransform: {fileID: 4667727688152255249}
-  healthFragment: {fileID: 8876059630334482013, guid: 2b4b9d0cb98f66949bc832bc0328b8d4,
-    type: 3}
+  healthFragment: {fileID: 8876059630334482013, guid: 2b4b9d0cb98f66949bc832bc0328b8d4, type: 3}
 --- !u!114 &2600107577364255513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,8 +328,7 @@ MonoBehaviour:
   baseHealth: 20
   baseColor: {r: 0.78878653, g: 0.11863652, b: 0.8113208, a: 1}
   minScale: 0.5
-  fragment: {fileID: 8876059630334482013, guid: 2b4b9d0cb98f66949bc832bc0328b8d4,
-    type: 3}
+  fragment: {fileID: 8876059630334482013, guid: 2b4b9d0cb98f66949bc832bc0328b8d4, type: 3}
 --- !u!58 &2600107577364255512
 CircleCollider2D:
   m_ObjectHideFlags: 0

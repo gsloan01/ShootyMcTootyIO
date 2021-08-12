@@ -30,7 +30,7 @@ public class Projectile : MonoBehaviourPunCallbacks, IPunInstantiateMagicCallbac
         //QUICK GROWTH
         //scale = Mathf.Sqrt(health * .5f) - (Mathf.Sqrt(baseHealth * .5f) - 1);
 
-        transform.parent.localScale = new Vector3(scale, scale, scale) * baseScale;
+        transform.localScale = new Vector3(scale, scale, scale) * baseScale;
 
         rb = GetComponent<Rigidbody2D>();
     }
@@ -38,7 +38,6 @@ public class Projectile : MonoBehaviourPunCallbacks, IPunInstantiateMagicCallbac
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(rb);
         rb.MovePosition(transform.position + Velocity * Time.deltaTime);
     }
 
