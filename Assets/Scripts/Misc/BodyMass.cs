@@ -95,6 +95,7 @@ public class BodyMass : MonoBehaviour
         }
         if(health <= 0)
         {
+
             GameManager.Instance.LeaveRoom();
             int frags = Random.Range(5, 10);
             for (int i = 0; i < frags; i++)
