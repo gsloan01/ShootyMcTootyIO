@@ -2,17 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using TMPro;
 
 public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
 {
     [Tooltip("The local player instance. Use this to know if the local player is represented in the Scene")]
     public static GameObject LocalPlayerInstance;
 
+    public TMP_Text nameUI;
+
+
     void Awake()
     {
         if (photonView.IsMine)
         {
             PlayerManager.LocalPlayerInstance = this.gameObject;
+            nameUI.text = PhotonNetwork.NickName;
         }
 
         DontDestroyOnLoad(this.gameObject);
