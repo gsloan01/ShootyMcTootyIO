@@ -18,6 +18,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         {
             PlayerManager.LocalPlayerInstance = this.gameObject;
             nameUI.text = PhotonNetwork.NickName;
+            //nameUI.text = PhotonNetwork.PlayerListOthers;
         }
 
         DontDestroyOnLoad(this.gameObject);
