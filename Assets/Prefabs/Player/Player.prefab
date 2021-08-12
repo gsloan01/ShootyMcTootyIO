@@ -79,7 +79,7 @@ SpriteRenderer:
   m_Size: {x: 16, y: 16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1933802429
@@ -469,7 +469,7 @@ MonoBehaviour:
     powerupTimer: 10
   aimingReticle: {fileID: 6754705241872480085}
   bodyMass: {fileID: 6754705242747173345}
-  projectile: {fileID: 7178329793846644056, guid: b85b1d6ab71ce57499f88843f298db2a, type: 3}
+  projectile: {fileID: 7178329793846644056, guid: 55962f60557fe66469d385b4fe751c0f, type: 3}
   shotTransform: {fileID: 5665855564778962452}
   healthFragment: {fileID: 8876059630334482013, guid: 2b4b9d0cb98f66949bc832bc0328b8d4, type: 3}
 --- !u!114 &6754705242747173345
