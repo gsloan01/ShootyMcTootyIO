@@ -46,7 +46,7 @@ namespace Photon.Pun.Demo.Asteroids
 
         public void Update()
         {
-            if (!photonView.IsMine)
+            if (!photonView.isMine)
             {
                 return;
             }
@@ -67,7 +67,7 @@ namespace Photon.Pun.Demo.Asteroids
 
             if (collision.gameObject.CompareTag("Bullet"))
             {
-                if (photonView.IsMine)
+                if (photonView.isMine)
                 {
                     Bullet bullet = collision.gameObject.GetComponent<Bullet>();
                     bullet.Owner.AddScore(isLargeAsteroid ? 2 : 1);
@@ -81,7 +81,7 @@ namespace Photon.Pun.Demo.Asteroids
             }
             else if (collision.gameObject.CompareTag("Player"))
             {
-                if (photonView.IsMine)
+                if (photonView.isMine)
                 {
                     collision.gameObject.GetComponent<PhotonView>().RPC("DestroySpaceship", RpcTarget.All);
 

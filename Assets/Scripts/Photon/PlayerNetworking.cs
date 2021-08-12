@@ -13,7 +13,7 @@ public class PlayerNetworking : MonoBehaviour
     void Start()
     {
         photonView = GetComponent<PhotonView>();
-        if (!photonView.IsMine)
+        if (!photonView.isMine)
         {
             foreach(MonoBehaviour script in scriptsToIgnore)
             {

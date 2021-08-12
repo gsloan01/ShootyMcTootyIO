@@ -14,7 +14,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
 
     void Awake()
     {
-        if (photonView.IsMine)
+        if (photonView.isMine)
         {
             PlayerManager.LocalPlayerInstance = this.gameObject;
             nameUI.text = PhotonNetwork.NickName;
@@ -28,7 +28,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (stream.IsWriting)
         {
-            stream.SendNext(nameUI);
+            //stream.SendNext(nameUI);
         }
         else
         {
@@ -38,7 +38,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
 
     void Update()
     {
-        if (!photonView.IsMine)
+        if (!photonView.isMine)
         {
             return;
         }

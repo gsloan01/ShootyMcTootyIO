@@ -177,10 +177,10 @@ namespace Photon.Pun
         /// True in case the controller matches the local Player.
         /// True if this is a scene photonview (null owner and ownerId == 0) on the Master client.
         /// </remarks>
-        public bool IsMine { get; private set; }
+        public bool isMine { get; private set; }
         public bool AmController
         {
-            get { return this.IsMine; }
+            get { return this.isMine; }
         }
 
         public Player Controller { get; private set; }
@@ -253,7 +253,7 @@ namespace Photon.Pun
                 }
                 this.controllerActorNr = this.Controller != null ? this.Controller.ActorNumber : value;
 
-                this.IsMine = PhotonNetwork.LocalPlayer != null && this.controllerActorNr == PhotonNetwork.LocalPlayer.ActorNumber;
+                this.isMine = PhotonNetwork.LocalPlayer != null && this.controllerActorNr == PhotonNetwork.LocalPlayer.ActorNumber;
 
                 if (!ReferenceEquals(this.Controller, prevController))
                 {

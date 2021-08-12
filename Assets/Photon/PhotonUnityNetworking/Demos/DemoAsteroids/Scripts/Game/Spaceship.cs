@@ -91,7 +91,7 @@ namespace Photon.Pun.Demo.Asteroids
 
         public void FixedUpdate()
         {
-            if (!photonView.IsMine)
+            if (!photonView.isMine)
             {
                 return;
             }
@@ -144,7 +144,7 @@ namespace Photon.Pun.Demo.Asteroids
             EngineTrail.SetActive(false);
             Destruction.Play();
 
-            if (photonView.IsMine)
+            if (photonView.isMine)
             {
                 object lives;
                 if (PhotonNetwork.LocalPlayer.CustomProperties.TryGetValue(AsteroidsGame.PLAYER_LIVES, out lives))

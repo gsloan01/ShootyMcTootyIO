@@ -797,7 +797,7 @@ namespace Photon.Pun
             if (!localOnly)
             {
                 //Debug.LogWarning("Destroy " + instantiationId + " creator " + creatorId, go);
-                if (!viewZero.IsMine)
+                if (!viewZero.isMine)
                 {
                     Debug.LogError("Failed to 'network-remove' GameObject. Client is neither owner nor MasterClient taking over for owner who left: " + viewZero);
                     foundPVs.Clear();   // as foundPVs is re-used, clean it to avoid lingering references
@@ -1635,7 +1635,7 @@ namespace Photon.Pun
                 PhotonView view = enumerator.Current.Value;
 
                 // a client only sends updates for active, synchronized PhotonViews that are under it's control (isMine)
-                if (view.Synchronization == ViewSynchronization.Off || view.IsMine == false || view.isActiveAndEnabled == false)
+                if (view.Synchronization == ViewSynchronization.Off || view.isMine == false || view.isActiveAndEnabled == false)
                 {
                     continue;
                 }
@@ -2306,7 +2306,7 @@ namespace Photon.Pun
 
                         if (PhotonNetwork.LogLevel == PunLogLevel.Informational)
                         {
-                            Debug.Log(string.Format("OwnershipRequest. actorNr {0} requests view {1} from {2}. current pv owner: {3} is {4}. isMine: {6} master client: {5}", actorNr, requestedViewId, requestedFromOwnerId, requestedView.OwnerActorNr, requestedView.IsOwnerActive ? "active" : "inactive", MasterClient.ActorNumber, requestedView.IsMine));
+                            Debug.Log(string.Format("OwnershipRequest. actorNr {0} requests view {1} from {2}. current pv owner: {3} is {4}. isMine: {6} master client: {5}", actorNr, requestedViewId, requestedFromOwnerId, requestedView.OwnerActorNr, requestedView.IsOwnerActive ? "active" : "inactive", MasterClient.ActorNumber, requestedView.isMine));
                         }
 
                         switch (requestedView.OwnershipTransfer)

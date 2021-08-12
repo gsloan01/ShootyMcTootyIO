@@ -82,7 +82,7 @@ namespace Photon.Pun
             if (EditorApplication.isPlaying)
             {
                 string masterClientHint = PhotonNetwork.IsMasterClient ? " (master)" : "";
-                EditorGUILayout.LabelField("IsMine:", this.m_Target.IsMine.ToString() + masterClientHint);
+                EditorGUILayout.LabelField("IsMine:", this.m_Target.isMine.ToString() + masterClientHint);
                 Room room = PhotonNetwork.CurrentRoom;
                 int cretrId = this.m_Target.CreatorActorNr;
                 Player cretr = (room != null) ? room.GetPlayer(cretrId) : null;

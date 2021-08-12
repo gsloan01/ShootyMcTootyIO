@@ -123,7 +123,7 @@ namespace Photon.Pun.Demo.SlotRacer
             this.CarInstance = (GameObject) Instantiate(this.CarPrefabs[gridStartIndex], this.transform.position, this.transform.rotation);
 
             // We'll wait for the first serializatin to pass, else we'll have a glitch where the car is positioned at the wrong position.
-            if (!this.photonView.IsMine)
+            if (!this.photonView.isMine)
             {
                 this.CarInstance.SetActive(false);
             }
@@ -181,7 +181,7 @@ namespace Photon.Pun.Demo.SlotRacer
                 return;
             }
 
-            if (this.photonView.IsMine)
+            if (this.photonView.isMine)
             {
                 this.m_input = Input.GetAxis("Vertical");
                 if (this.m_input == 0f)
