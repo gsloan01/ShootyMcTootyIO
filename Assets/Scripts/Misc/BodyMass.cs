@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -55,7 +56,7 @@ public class BodyMass : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Mass Name: " + gameObject.name);
+        Debug.Log("Mass Name: " + GetComponent<PhotonView>().Owner.UserId);
     }
     void Die()
     {
