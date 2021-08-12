@@ -16,6 +16,7 @@ public class BodyMass : MonoBehaviour
         {
             health = value;
             UpdateScale();
+            UpdateTopMass();
         }
     }
     public float HealthRatio { get { return health / baseHealth; } }
@@ -27,11 +28,29 @@ public class BodyMass : MonoBehaviour
     public float minScale = .3f;
     public GameObject fragment;
 
+    public static BodyMass biggestPlayer;
+    private void UpdateTopMass()
+    {
+        if (!biggestPlayer)
+        {
+            biggestPlayer = this;
+            return;
+        }
+
+        BodyMass bigMass = biggestPlayer.GetComponent<BodyMass>();
+        if (bigMass.Health < this.Health)
+        {
+            biggestPlayer = this;
+        }
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
         health = baseHealth;
         GetComponent<SpriteRenderer>().color = baseColor;
+        UpdateTopMass();
     }
 
     private void Update()
