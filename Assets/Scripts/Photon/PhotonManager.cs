@@ -37,6 +37,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         instance = this;
         //progressLabel?.SetActive(false);
         //controlPanel?.SetActive(true);
+
         //Connect();
     }
 
@@ -44,6 +45,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     {
         //progressLabel?.SetActive(true);
         //controlPanel?.SetActive(false);
+
         // we check if we are connected or not, we join if we are , else we initiate the connection to the server.
         if (PhotonNetwork.IsConnected)
         {
@@ -87,6 +89,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     {
         //progressLabel?.SetActive(false);
         //controlPanel?.SetActive(true);
+
         isConnecting = false;
     }
 }
