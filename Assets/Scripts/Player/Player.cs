@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -128,7 +129,7 @@ public class Player : MonoBehaviour
 
             for (int i = 0; i < weapon.fireNum; i++)
             {
-                GameObject newProjectile = Instantiate(projectile, shotTransform.position, Quaternion.identity);
+                GameObject newProjectile = PhotonNetwork.Instantiate(projectile.name, shotTransform.position, Quaternion.identity);
 
                 int damage = TakeShotDamage();
 
