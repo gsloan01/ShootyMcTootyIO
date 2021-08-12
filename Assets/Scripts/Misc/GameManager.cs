@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         if (PlayerManager.LocalPlayerInstance == null)
         {
             Vector2 playerSpawnPosition = new Vector2(Random.Range(-50, 50), Random.Range(-50, 50));
-            playerSpawnPosition = Vector2.zero;
+            //playerSpawnPosition = Vector2.zero;
             PhotonNetwork.Instantiate(playerPrefab.name, playerSpawnPosition, Quaternion.identity);
         }
     }
