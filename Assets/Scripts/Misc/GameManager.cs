@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         if (PlayerManager.LocalPlayerInstance == null)
         {
-            PhotonNetwork.Instantiate(playerPrefab.name, new Vector2(Random.Range(-75, 75), Random.Range(-75, 75)), Quaternion.identity);
+            PhotonNetwork.Instantiate(playerPrefab.name, new Vector2(Random.Range(-50, 50), Random.Range(-50, 50)), Quaternion.identity);
         }
     }
 
