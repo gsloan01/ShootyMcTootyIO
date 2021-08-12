@@ -31,26 +31,30 @@ public class Fragment : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        //Velocity drag
-        rb.velocity -= (rb.velocity * .60f) * Time.deltaTime;
-
-        if(timer < actionTime)
+        else
         {
-            timer += Time.deltaTime;
+            //Velocity drag
+            rb.velocity -= (rb.velocity * .60f) * Time.deltaTime;
 
-        }
-        if (timer >= actionTime)
-        {
-
-            Vector2 direction = target.transform.position - transform.position;
-            rb.velocity += direction.normalized * speed * Time.deltaTime;
-            Vector2.ClampMagnitude(rb.velocity, 5);
-            if (direction.magnitude < (target.transform.localScale.x * .5f))
+            if (timer < actionTime)
             {
-                target.GetComponent<BodyMass>().Health += 1;
-                Destroy(gameObject);
+                timer += Time.deltaTime;
+
+            }
+            if (timer >= actionTime)
+            {
+
+                Vector2 direction = target.transform.position - transform.position;
+                rb.velocity += direction.normalized * speed * Time.deltaTime;
+                Vector2.ClampMagnitude(rb.velocity, 5);
+                if (direction.magnitude < (target.transform.localScale.x * .5f))
+                {
+                    target.GetComponent<BodyMass>().Health += 1;
+                    Destroy(gameObject);
+                }
             }
         }
+        
         
     }
 }

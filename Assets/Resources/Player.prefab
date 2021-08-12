@@ -457,6 +457,7 @@ MonoBehaviour:
   scriptsToIgnore:
   - {fileID: 2600107577364255718}
   - {fileID: 843991517473559921}
+  - {fileID: 2600107577364255513}
   objectsToIgnore:
   - {fileID: 1351075761080138873}
 --- !u!114 &-1567635908874372098
