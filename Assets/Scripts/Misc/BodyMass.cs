@@ -56,7 +56,7 @@ public class BodyMass : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Mass Name: " + GetComponent<PhotonView>().Owner.UserId);
+
     }
     void Die()
     {
